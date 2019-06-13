@@ -7,6 +7,7 @@ angular.module('minhasDiretivas', [])
     // mantem os elementos filhos do html no caso <img>
     ddo.transclude = true;
 
+    // atributo interno titulo, o '@' se comunica com o mundo externo com o valor passado titulo="{{foto.titulo}}"
     ddo.scope = {
         titulo: '@'
     }
