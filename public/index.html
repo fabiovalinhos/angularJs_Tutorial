@@ -2,6 +2,8 @@
 <html lang="pt-br" ng-app="alurapic">
 	<head>
 		<meta charset="UTF-8">
+		<!-- faz com que o angular deixa de trabalhar com # nas rotas e trabalha com html5, mas o backend tem que estar preparado -->
+		<base href="/">
 		<meta name="viewport" content="width=device-width">
 		<title>Alurapic</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -15,7 +17,7 @@
 		<script src="js/controllers/fotos-controller.js"></script>
 		<script src="js/directives/minhas-diretivas.js"></script>
 	</head>
-	<body ng-controller="FotosController">
+	<body>
 		<div class="container">
 			<ng-view></ng-view>
 		</div><!-- fim container -->

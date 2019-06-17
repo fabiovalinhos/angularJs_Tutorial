@@ -1,6 +1,7 @@
 angular.module('alurapic').controller('FotosController', function($scope, $http) {
 	
 	$scope.fotos = [];
+	// onde fica guardado o valor do meu ng-model que vem de principal.html
 	$scope.filtro = '';
 
 	$http.get('/v1/fotos')
