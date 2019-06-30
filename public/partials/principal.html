@@ -10,7 +10,10 @@
     </div>
 </div>
 <div class="row">
-    <meu-painel class="painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
+
+    <!-- O ideal é colocar todas as classes nesta minha tag personalizada e nao na div que vem do templateUrl (meu-painel.html) -->
+    <!-- O efeito só funcionou desta maneira -->
+    <meu-painel class="panel panel-default col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
         <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
     </meu-painel>
 </div><!-- fim row -->
