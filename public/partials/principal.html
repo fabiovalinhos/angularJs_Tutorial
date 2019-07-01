@@ -4,13 +4,18 @@
 <div class="row">
     <div class="col-md-12">
         <form>
-            <!-- ng-model-options para aplicar um delay de 500ms-->
-            <input ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" placeholder="filtrar">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a href="fotos/new" class="btn btn-primary">Nova foto</a>
+                </span>
+                <!-- ng-model-options para aplicar um delay de 500ms-->
+                <input ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" placeholder="filtrar">
+            </div>
         </form>
     </div>
 </div>
-<div class="row">
 
+<div class="row">
     <!-- O ideal é colocar todas as classes nesta minha tag personalizada e nao na div que vem do templateUrl (meu-painel.html) -->
     <!-- O efeito só funcionou desta maneira -->
     <meu-painel class="panel panel-default col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
