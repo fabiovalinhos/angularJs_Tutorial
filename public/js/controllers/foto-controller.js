@@ -22,6 +22,7 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
         if ($scope.formulario.$valid) {
             
             // se minha foto já tem um id (no caso uma edição) ... senão é uma foto nova
+            // poderia usar também $routeParams.fotoId
             if ($scope.foto._id) {
                 $http.put('v1/fotos/' + $scope.foto._id, $scope.foto)
                 .success(function() {

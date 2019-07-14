@@ -15,4 +15,20 @@ angular.module('minhasDiretivas', [])
     ddo.templateUrl = 'js/directives/meu-painel.html';
 
     return ddo;
+})
+.directive('meuBotaoPerigo', function() {
+    var ddo = {};
+
+    ddo.restric = "E";
+
+    // usei o & pois estou passando uma expressão (no caso a função removeListener()) e não uma string como é usado no @
+    ddo.scope = {
+        nome: '@',
+        acao: '&'
+    };
+    
+// achei estranho passar ng-click="acao(foto)". coloquei apenas "acao" e funcionou. na dúvida mantive
+    ddo.template = '<button ng-click="acao(foto)" class="btn btn-danger btn-block">{{nome}}</button>';
+
+    return ddo;
 });

@@ -18,7 +18,7 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
 		$http.delete('v1/fotos/' + foto._id)
 		.success(function() {
 
-			// retirando a foto da minha view ao invés de fazer uma nova querue no banco de dados
+			// retirando a foto da minha view (do meu array) ao invés de fazer uma nova querue no banco de dados
 			var indiceFoto = $scope.fotos.indexOf(foto);
 			$scope.fotos.splice(indiceFoto, 1);
 

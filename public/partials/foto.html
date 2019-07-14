@@ -7,6 +7,7 @@
 <!-- quando apertar o botão submit o angular vai usar a diretiva ng-submit
 e rodar o programa submeter() e capturo os dados no console
 No javascript seria o onSubmit -->
+<!-- novalidate vc está desabilitando a validação do html5 -->
 <form novalidate name="formulario" class="row" ng-submit="submeter()">
     <div class="col-md-6">
         <div class="form-group">
@@ -30,6 +31,23 @@ No javascript seria o onSubmit -->
             <label>Descrição</label>
             <textarea ng-model="foto.descricao" name="descricao" class="form-control">
                 </textarea>
+        </div>
+
+        <!-- seleção do tipo -->
+        <div class="form-group">
+            <label>Grupo</label>
+
+            <!-- apesar de foto.html pertencer foto-controller.js, posso apontar meu select para grupos-controller.js -->
+            <!-- ng-options o grupo_id seria meu valor e o grupo nome é a opção que o usuário vê -->
+            <select name="grupo"class="form-control" ng-controller="GruposController" 
+            ng-model="foto.grupo" 
+            ng-options="grupo._id as (grupo.nome | uppercase)  for grupo in grupos"
+            required>
+                <option value="">Selecione Grupo</option>
+            </select>
+            <span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-control alert-danger">
+                Grupo obrigatório
+            </span>
         </div>
 
         <button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">

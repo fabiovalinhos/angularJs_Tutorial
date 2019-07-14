@@ -16,6 +16,7 @@ angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
             controller: 'FotoController'
         });
 
+        // :fotoId é um coringa
         $routeProvider.when('/fotos/edit/:fotoId', {
             templateUrl: 'partials/foto.html',
             controller: 'FotoController'
