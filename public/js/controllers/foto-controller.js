@@ -1,20 +1,32 @@
-angular.module('alurapic').controller('FotoController', function($scope, $http, $routeParams) {
+// angular.module('alurapic').controller('FotoController', function ($scope, $http, $routeParams, $resource) {
 
-    // $routeParams me dá as informacoes dos parâmetros passados na rota
+// recursoFoto chama meu meus-servicos.js
+angular.module('alurapic').controller('FotoController', function ($scope, $routeParams, recursoFoto) {
 
     $scope.foto = {};
     $scope.mensagem = '';
 
-    if ($routeParams.fotoId) {
-        $http.get('v1/fotos/' + $routeParams.fotoId)
-        .success(function(retorno) {
-            $scope.foto = retorno;
-        })
-        .error(function(erro){
+    // $routeParams me dá as informacoes dos parâmetros passados na rota
+
+    if($routeParams.fotoId) {
+        recursoFoto.get({fotoId: $routeParams.fotoId}, function(foto) {
+            $scope.foto = foto;
+        }, function(erro) {
             console.log(erro);
             $scope.mensagem = "Não foi possível obter a foto";
         });
-    };
+    }
+
+    // if ($routeParams.fotoId) {
+    //     $http.get('v1/fotos/' + $routeParams.fotoId)
+    //     .success(function(retorno) {
+    //         $scope.foto = retorno;
+    //     })
+    //     .error(function(erro){
+    //         console.log(erro);
+    //         $scope.mensagem = "Não foi possível obter a foto";
+    //     });
+    // };
 
     $scope.submeter = function() {
         
@@ -24,27 +36,44 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
             // se minha foto já tem um id (no caso uma edição) ... senão é uma foto nova
             // poderia usar também $routeParams.fotoId
             if ($scope.foto._id) {
-                $http.put('v1/fotos/' + $scope.foto._id, $scope.foto)
-                .success(function() {
+
+                recursoFoto.update({fotoId: $scope.foto._id}, $scope.foto, function(){
                     $scope.mensagem = "Atualização com sucesso da foto " + $scope.foto.titulo;
-                })
-                .error(function(erro){
+                }, function(erro) {
                     console.log(erro);
                     $scope.mensagem = "Foto não foi atualizada";
                 });
+
+                // $http.put('v1/fotos/' + $scope.foto._id, $scope.foto)
+                // .success(function() {
+                //     $scope.mensagem = "Atualização com sucesso da foto " + $scope.foto.titulo;
+                // })
+                // .error(function(erro){
+                //     console.log(erro);
+                //     $scope.mensagem = "Foto não foi atualizada";
+                // });
+
             }else{
 
-                $http.post('v1/fotos', $scope.foto)
-                .success(function(){
-        
-                    // após cadastrar a foto ele limpa o formulário
+                recursoFoto.save($scope.foto, function(){
                     $scope.foto = {};
                     $scope.mensagem = "Foto cadastrada com sucesso";
-                })
-                .error(function(error){
-                    $scope.mensagem = "Foto não cadastrada";
-                    console.log(error);
+                }, function(erro){
+                        $scope.mensagem = "Foto não cadastrada";
+                        console.log(erro);
                 });
+
+                // $http.post('v1/fotos', $scope.foto)
+                // .success(function(){
+        
+                //     // após cadastrar a foto ele limpa o formulário
+                //     $scope.foto = {};
+                //     $scope.mensagem = "Foto cadastrada com sucesso";
+                // })
+                // .error(function(error){
+                //     $scope.mensagem = "Foto não cadastrada";
+                //     console.log(error);
+                // });
             }
 
         }

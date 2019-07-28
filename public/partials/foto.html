@@ -39,7 +39,7 @@ No javascript seria o onSubmit -->
 
             <!-- apesar de foto.html pertencer foto-controller.js, posso apontar meu select para grupos-controller.js -->
             <!-- ng-options o grupo_id seria meu valor e o grupo nome é a opção que o usuário vê -->
-            <select name="grupo"class="form-control" ng-controller="GruposController" 
+            <select name="grupo" class="form-control" ng-controller="GruposController" 
             ng-model="foto.grupo" 
             ng-options="grupo._id as (grupo.nome | uppercase)  for grupo in grupos"
             required>
@@ -56,6 +56,7 @@ No javascript seria o onSubmit -->
         <a href="/" class="btn btn-primary">Voltar</a>
         <hr>
     </div>
+    
     <div class="col-md-6">
         <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
     </div>

@@ -1,4 +1,7 @@
-angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
+// angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'ngResource'])
+//     .config(function ($routeProvider, $locationProvider) {
+
+angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'meusServicos'])
     .config(function ($routeProvider, $locationProvider) {
 
         // faz com que o angular deixa de trabalhar com # nas rotas e trabalha com html5, mas o backend tem que estar preparado
