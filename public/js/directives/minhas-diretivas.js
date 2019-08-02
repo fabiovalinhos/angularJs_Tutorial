@@ -21,7 +21,7 @@ angular.module('minhasDiretivas', [])
 
     ddo.restric = "E";
 
-    // usei o & pois estou passando uma expressão (no caso a função removeListener()) e não uma string como é usado no @
+    // usei o & pois estou passando uma expressão (no caso a função remover()) e não uma string como é usado no @
     ddo.scope = {
         nome: '@',
         acao: '&'
