@@ -36,7 +36,8 @@ angular.module('alurapic').controller('FotoController', function ($scope, $route
             .then(function(dados) {
                 $scope.mensagem = dados.mensagem;
                 // Limpando o formulário
-                if (dados.inclusao) {$scope.foto = {}}
+                if (dados.inclusao = $scope.foto) {$scope.foto = {} }
+                // ele vai disparar um evento
             })
             .catch(function(dados) {
                 $scope.mensagem = dados.mensagem;

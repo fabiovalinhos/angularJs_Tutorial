@@ -32,15 +32,32 @@ angular.module('minhasDiretivas', [])
 
     return ddo;
 })
-.directive('minhaFoto', function(){
+.directive('minhaFoto', function () {
 
     var ddo = {};
     ddo.restric = "AE";
 
     ddo.scope = {
-        titulo = '@',
-        url = '@'
+        titulo: '@',
+        url: '@'
     }
 
     ddo.template = '<img class="img-responsive center-block" src="{{url}} alt="{{titulo}}" ';
+
+    return ddo;
+})
+.directive('meuFocus', function(){
+    
+    var ddo = {};
+
+    ddo.restric = "A";
+
+    ddo.link = function(scope, element) {
+        scope.$on('fotoCadastrada', function () {
+            element[0].focus();
+        });
+    }
+
+    return ddo;
+
 });
